@@ -194,7 +194,7 @@ final class LoginViewController: UIViewController {
 
 private func createCustomTextField(placeholder: String, isSecure: Bool = false) -> CustomTextField {
     let tf = CustomTextField(placeholder: placeholder, isSecure: isSecure)
-    tf.textColor = .black // Darker text
+    tf.textColor = .gray // Darker text
     tf.tintColor = .darkGray // Cursor color
     tf.attributedPlaceholder = NSAttributedString(
         string: placeholder,
