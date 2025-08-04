@@ -6,19 +6,47 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        
+//        let window = UIWindow(windowScene: windowScene)
+//        let userCache = UserCache()
+//        let rootVC: UIViewController
+//        
+////        if userCache.getCurrentUser() != nil {
+////            // ✅ User is already logged in
+////            rootVC = MainAppViewController()
+////        } else {
+////            let loginVC = LoginViewController()
+////            rootVC = UINavigationController(rootViewController: loginVC)
+////        }
+//        
+//        if userCache.getCurrentUser() != nil {
+//            rootVC = MainAppViewController()
+//        } else {
+//            let loginVC = LoginViewController()
+//            rootVC = UINavigationController(rootViewController: loginVC)
+//        }
+//
+//        
+//        window.rootViewController = rootVC
+//        self.window = window
+//        window.makeKeyAndVisible()
+//    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
         let userCache = UserCache()
         let rootVC: UIViewController
         
-        if userCache.getUser() != nil {
-            // User already logged in, show main app screen (create MainAppViewController)
-            rootVC = MainAppViewController() // You create this placeholder in /View folder
+        if let _ = userCache.getCurrentUser() {
+            // User is logged in → go to main app
+            rootVC = MainAppViewController()
         } else {
-            // Show login flow inside navigation controller
+            // No logged-in user → go to login
             let loginVC = LoginViewController()
             rootVC = UINavigationController(rootViewController: loginVC)
         }
@@ -27,5 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
     }
+
+
 }
 

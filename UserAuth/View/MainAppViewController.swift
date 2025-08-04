@@ -72,14 +72,20 @@ final class MainAppViewController: UIViewController {
 //                              animations: nil)
 //        }
 //    }
-    @objc private func logoutTapped() {
-        // Clear cached user data
-        UserCache().clearUser()
-        
-        // Create login screen nav controller
+    
+//    @objc func logoutTapped() {
+//        UserCache().clearCurrentUser()
+//        let loginVC = LoginViewController()
+//        let navVC = UINavigationController(rootViewController: loginVC)
+//        UIApplication.shared.windows.first?.rootViewController = navVC
+//
+//    }
+    
+    @objc func logoutTapped() {
+        UserCache().clearCurrentUser()
         let loginVC = LoginViewController()
         let navVC = UINavigationController(rootViewController: loginVC)
-        
+
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.rootViewController = navVC
@@ -89,6 +95,25 @@ final class MainAppViewController: UIViewController {
                               animations: nil)
         }
     }
+
+
+//    @objc private func logoutTapped() {
+//        // Clear cached user data
+//        UserCache().clearUser()
+//        
+//        // Create login screen nav controller
+//        let loginVC = LoginViewController()
+//        let navVC = UINavigationController(rootViewController: loginVC)
+//        
+//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//           let window = windowScene.windows.first {
+//            window.rootViewController = navVC
+//            UIView.transition(with: window,
+//                              duration: 0.5,
+//                              options: .transitionFlipFromLeft,
+//                              animations: nil)
+//        }
+//    }
 
 }
 

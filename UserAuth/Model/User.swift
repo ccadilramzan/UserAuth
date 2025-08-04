@@ -8,14 +8,7 @@
 // Model/User.swift
 import Foundation
 
-//struct User: Codable , Identifiable{
-//    let id = UUID()
-//    let username: String
-//    let email: String
-//    let password: String
-//}
-
-struct User: Codable {
+struct User: Codable, Equatable {
     let username: String
     let email: String
     let password: String
